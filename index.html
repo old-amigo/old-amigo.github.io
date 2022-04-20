@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link href="img/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+    <title>Портфолио Куруленко Д.О.</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="Веб-сайт - портфолио Куруленко Дмитрия Олеговича" name="description">
+
+    <meta content="Портфолио, Куруленко, Куруленко Дмитрий Олегович, Куруленко Д.О." name="keywords">
+
+    <meta content="index, follow" name="robots">
+
+    <link href="css/main.css" rel="stylesheet">
+
+    <meta content="Портфолио Куруленко Д.О." property="og:title">
+    <meta content="http://localhost" property="og:url">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+<header class="header">
+    <h2 class="header__label">Привет!</h2>
+    <p class="header__description">Меня зовут Куруленко Дмитрий</p>
+    <p class="header__description">Вы находитесь на моем сайте-портфолио</p>
+</header>
+<main>
+    <h1></h1>
+    <div class="main-image">
+        <img class="main-image__image" src="img/MyFace.jpg" alt="Мое фото, декоративный элемент">
+    </div>
+
+    <section class="info-block">
+        <h2 class="info-block__header">Мои навыки</h2>
+        <ul class="info-block__ulist">
+            <li class="info-block__ulist-item">Программирование на C/C++, C# , PHP</li>
+            <li class="info-block__ulist-item">Верстка веб-страниц с использованием HTML, CSS, JS</li>
+            <li class="info-block__ulist-item">Разработка в СУБД MySQL, MSSQL, PostgreSQL</li>
+            <li class="info-block__ulist-item">Конфигурирование серверного окружения: nginx, docker, php, СУБД...</li>
+            <li class="info-block__ulist-item">Анализ данных средствами языка R, MathLab, Excel</li>
+            <li class="info-block__ulist-item">Проектирование бизнес-процессов в нотации BPMN</li>
+            <li class="info-block__ulist-item">Построение архитектур сетей в Cisco Packet Tracer</li>
+            <li class="info-block__ulist-item">BASH-скрипты</li>
+        </ul>
+        <p class="info-block__p">... да, CSS явно не мой конек</p>
+    </section>
+
+    <section class="info-block info-block--flex">
+        <h2 class="info-block__header">Вы можете найти меня здесь:       </h2>
+        <a class="button" href="https://vk.com/dimas_holera" title="VK">
+            <img class="button__img" src="img/contactSites/vk.png" alt="VK link">
+        </a>
+        <a class="button" href="https://github.com/old-amigo" title="GitHub">
+            <img class="button__img" src="img/contactSites/github.png" alt="GitHub link">
+        </a>
+        <a class="button" href="https://t.me/old_amigo" title="Telegram">
+            <img class="button__img" src="img/contactSites/telegram.png" alt="telegram link">
+        </a>
+    </section>
+</main>
+
+<footer>
+    <div class="contact-form js-form">
+        <label class="contact-form__label">Оставьте свои контакты и я свяжусь с Вами!</label>
+        <form v-if="state === null" @submit.prevent="onSubmit" class="contact-form__form" action="/" method="post" enctype="application/x-www-form-urlencoded">
+            <label class="contact-form__form-item-label" for="contact-form-name">Имя</label>
+            <input class="contact-form__form-item-input" type="text" id="contact-form-name" v-model.trim="name">
+
+            <label class="contact-form__form-item-label" for="contact-form-phone">Телефон</label>
+            <input class="contact-form__form-item-input" type="tel" id="contact-form-phone" v-model.trim="phone">
+
+
+            <label class="contact-form__form-item-label" for="contact-form-email">e-mail</label>
+            <input class="contact-form__form-item-input" type="email" id="contact-form-email" v-model.trim="email">
+
+            <button class="contact-form__form-item-input" type="submit">Отправить</button>
+        </form>
+        <p v-if="state === 201">Спасибо, ваши данные отправлены:<br> {{user}}</p>
+        <p v-if="state === 401">Данные не отправлены</p>
+        <p v-if="state === 500">Сервер недоступен :С</p>
+    </div>
+</footer>
+<script src="js/contactFormHandle.js"></script>
+<script>
+
+</script>
+</body>
+
+</html>
